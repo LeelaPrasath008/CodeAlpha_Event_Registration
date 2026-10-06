@@ -2,41 +2,86 @@
 <html>
 <head>
     <title>My Registrations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-<h1>My Registrations</h1>
+    <div class="container">
 
-<ul>
-
-{% for registration in registrations %}
-
-    <li>
-
-        {{ registration.event.title }}
-
-        <a href="/events/cancel/{{ registration.id }}/">
-            <button>
-                Cancel
-            </button>
-        </a>
-
-    </li>
-{% empty %}
-
-    <li>
-        No registrations found
-    </li>
-
-{% endfor %}
-
-</ul>
-
-<br>
-
-<a href="/events/">
-    Back to Events
+        <a class="navbar-brand">
+    🎟️ Event Registration System
 </a>
 
+        <div>
+
+            <a
+                href="/events/"
+                class="btn btn-outline-light me-2"
+            >
+                Events
+            </a>
+
+            <a
+                href="/events/my-registrations/"
+                class="btn btn-outline-light"
+            >
+                My Registrations
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+<body>
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4">
+        My Registrations
+    </h2>
+
+    {% for registration in registrations %}
+
+    <div class="card shadow mb-3">
+
+        <div class="card-body">
+
+            <h4>
+                {{ registration.event.title }}
+            </h4>
+
+            <p>
+                Status:
+                {{ registration.status }}
+            </p>
+
+            <a
+                href="/events/cancel/{{ registration.id }}/"
+                class="btn btn-danger"
+            >
+                Cancel Registration
+            </a>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-warning">
+
+        No registrations found.
+
+    </div>
+
+    {% endfor %}
+
+</div>
 </body>
+<footer class="bg-dark text-white text-center p-3 mt-5">
+    <p>
+        Event Registration System |
+        Developed by Leelaprasath
+    </p>
+</footer>
 </html>

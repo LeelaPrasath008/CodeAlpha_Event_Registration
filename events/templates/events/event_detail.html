@@ -2,65 +2,118 @@
 <html>
 <head>
     <title>{{ event.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand">
+    🎟️ Event Registration System
+</a>
+
+        <div>
+
+            <a
+                href="/events/"
+                class="btn btn-outline-light me-2"
+            >
+                Events
+            </a>
+
+            <a
+                href="/events/my-registrations/"
+                class="btn btn-outline-light"
+            >
+                My Registrations
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
 <body>
+<div class="container mt-5">
 
-<h1>{{ event.title }}</h1>
+    <div class="card shadow">
 
-<p>
-    <strong>Description:</strong>
-    {{ event.description }}
-</p>
+        <div class="card-body">
 
-<p>
-    <strong>Date:</strong>
-    {{ event.date }}
-</p>
+            <h2 class="card-title">
+                {{ event.title }}
+            </h2>
 
-<p>
-    <strong>Location:</strong>
-    {{ event.location }}
-</p>
+            <hr>
 
-<p>
-    <strong>Capacity:</strong>
-    {{ event.capacity }}
-</p>
+            <p>
+                <strong>Description:</strong>
+                {{ event.description }}
+            </p>
 
-<p>
-    <strong>Registered:</strong>
-    {{ registered_count }}
-</p>
+            <p>
+                <strong>Date:</strong>
+                {{ event.date }}
+            </p>
 
-<p>
-    <strong>Available Seats:</strong>
-    {{ available_seats }}
-</p>
+            <p>
+                <strong>Location:</strong>
+                {{ event.location }}
+            </p>
 
-<p>
-    <strong>Organizer:</strong>
-    {{ event.organizer }}
-</p>
+            <p>
+                <strong>Capacity:</strong>
+                {{ event.capacity }}
+            </p>
 
-{% if available_seats > 0 %}
+            <p>
+                <strong>Registered:</strong>
+                {{ registered_count }}
+            </p>
 
-<a href="/events/register/{{ event.id }}/">
-    <button>Register</button>
-</a>
+            <p>
+                <strong>Available Seats:</strong>
+                {{ available_seats }}
+            </p>
 
-{% else %}
+            {% if available_seats > 0 %}
 
-<button disabled>
-    Event Full
-</button>
+            <a
+                href="/events/register/{{ event.id }}/"
+                class="btn btn-success"
+            >
+                Register
+            </a>
 
-{% endif %}
+            {% else %}
 
-<br><br>
+            <button
+                class="btn btn-danger"
+                disabled
+            >
+                Event Full
+            </button>
 
-<a href="/events/">
-    Back to Events
-</a>
+            {% endif %}
+
+            <a
+                href="/events/"
+                class="btn btn-secondary"
+            >
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
+<footer class="bg-dark text-white text-center p-3 mt-5">
+    <p>
+        Event Registration System |
+        Developed by Leelaprasath
+    </p>
+</footer>
 </html>
