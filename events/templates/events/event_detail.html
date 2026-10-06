@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ event.title }}</title>
+</head>
+<body>
+
+<h1>{{ event.title }}</h1>
+
+<p>
+    <strong>Description:</strong>
+    {{ event.description }}
+</p>
+
+<p>
+    <strong>Date:</strong>
+    {{ event.date }}
+</p>
+
+<p>
+    <strong>Location:</strong>
+    {{ event.location }}
+</p>
+
+<p>
+    <strong>Capacity:</strong>
+    {{ event.capacity }}
+</p>
+
+<p>
+    <strong>Registered:</strong>
+    {{ registered_count }}
+</p>
+
+<p>
+    <strong>Available Seats:</strong>
+    {{ available_seats }}
+</p>
+
+<p>
+    <strong>Organizer:</strong>
+    {{ event.organizer }}
+</p>
+
+{% if available_seats > 0 %}
+
+<a href="/events/register/{{ event.id }}/">
+    <button>Register</button>
+</a>
+
+{% else %}
+
+<button disabled>
+    Event Full
+</button>
+
+{% endif %}
+
+<br><br>
+
+<a href="/events/">
+    Back to Events
+</a>
+
+</body>
+</html>

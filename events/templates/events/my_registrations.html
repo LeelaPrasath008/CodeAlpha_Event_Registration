@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Registrations</title>
+</head>
+<body>
+
+<h1>My Registrations</h1>
+
+<ul>
+
+{% for registration in registrations %}
+
+    <li>
+
+        {{ registration.event.title }}
+
+        <a href="/events/cancel/{{ registration.id }}/">
+            <button>
+                Cancel
+            </button>
+        </a>
+
+    </li>
+{% empty %}
+
+    <li>
+        No registrations found
+    </li>
+
+{% endfor %}
+
+</ul>
+
+<br>
+
+<a href="/events/">
+    Back to Events
+</a>
+
+</body>
+</html>
